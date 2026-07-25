@@ -129,29 +129,59 @@ elif option == "Correlation Heatmap":
 - **Kilometers Driven** also has a weak negative relationship with **Price**.
 - As engine power increases, the resale price generally increases.
 """)
-
 # -------------------------------------------------------
 # Model Comparison
 # -------------------------------------------------------
 elif option == "Model Comparison":
 
-    st.header("Model Comparison")
+    st.header("📈 Machine Learning Model Comparison")
 
- model_scores = {
-    "Linear Regression": 0.717264,
-    "Decision Tree Regressor": 0.755922,
-    "Random Forest Regressor": 0.875684,
-    "Support Vector Regressor": 0.004984,
-    "K-Nearest Neighbors": 0.663884,
-    "Gradient Boosting Regressor": 0.900724
-}
+    model_scores = {
+        "Linear Regression": 0.717264,
+        "Decision Tree Regressor": 0.755922,
+        "Random Forest Regressor": 0.875684,
+        "Support Vector Regressor": 0.004984,
+        "K-Nearest Neighbors": 0.663884,
+        "Gradient Boosting Regressor": 0.900724
+    }
 
     score_df = pd.DataFrame(
         model_scores.items(),
-        columns=["Model","R² Score"]
+        columns=["Model", "R² Score"]
     )
 
-    st.bar_chart(score_df.set_index("Model"))
+    st.dataframe(score_df, use_container_width=True)
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    bars = ax.bar(
+        score_df["Model"],
+        score_df["R² Score"]
+    )
+
+    ax.set_title("Regression Model Performance")
+    ax.set_ylabel("R² Score")
+    plt.xticks(rotation=20, ha="right")
+
+    # Show values on top of each bar
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(
+            bar.get_x() + bar.get_width()/2,
+            height + 0.01,
+            f"{height:.3f}",
+            ha="center",
+            fontsize=9
+        )
+
+    st.pyplot(fig)
+
+    best_model = score_df.loc[score_df["R² Score"].idxmax()]
+
+    st.success(
+        f"🏆 Best Model: **{best_model['Model']}** "
+        f"(R² Score = **{best_model['R² Score']:.6f}**)"
+    )
 
 # -------------------------------------------------------
 # Feature Distribution
