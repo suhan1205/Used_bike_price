@@ -100,19 +100,35 @@ elif option == "Statistical Summary":
 # -------------------------------------------------------
 elif option == "Correlation Heatmap":
 
-    st.header("Correlation Heatmap")
+    st.header("📊 Correlation Heatmap")
 
-    fig, ax = plt.subplots(figsize=(10,6))
+    numeric_df = df[["price", "kms_driven", "age", "power"]]
+
+    fig, ax = plt.subplots(figsize=(8,6))
 
     sns.heatmap(
-        df.corr(numeric_only=True),
+        numeric_df.corr(),
         annot=True,
-        cmap="coolwarm",
-        linewidths=.5,
+        cmap="rocket",
+        linewidths=1,
+        fmt=".2f",
+        cbar=True,
+        square=True,
         ax=ax
     )
 
+    ax.set_title("Correlation Heatmap", fontsize=18)
+
     st.pyplot(fig)
+
+    st.info("""
+### 📌 Insights
+
+- **Power** has the strongest positive correlation with **Price**.
+- **Bike Age** has a weak negative correlation with **Price**.
+- **Kilometers Driven** also has a weak negative relationship with **Price**.
+- As engine power increases, the resale price generally increases.
+""")
 
 # -------------------------------------------------------
 # Model Comparison
