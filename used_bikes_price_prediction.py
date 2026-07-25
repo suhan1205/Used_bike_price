@@ -121,12 +121,14 @@ elif option == "Model Comparison":
 
     st.header("Model Comparison")
 
-    model_scores = {
-        "Linear Regression":0.62,
-        "Decision Tree":0.86,
-        "Random Forest":0.93,
-        "Gradient Boosting":0.95
-    }
+ model_scores = {
+    "Linear Regression": 0.717264,
+    "Decision Tree Regressor": 0.755922,
+    "Random Forest Regressor": 0.875684,
+    "Support Vector Regressor": 0.004984,
+    "K-Nearest Neighbors": 0.663884,
+    "Gradient Boosting Regressor": 0.900724
+}
 
     score_df = pd.DataFrame(
         model_scores.items(),
