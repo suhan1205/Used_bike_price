@@ -3,21 +3,23 @@ import joblib
 import pandas as pd
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
+
+# -------------------------
+# Paths
+# -------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_PATH = os.path.join(BASE_DIR, "bike_price_model.pkl")
-ENCODER_PATH = os.path.join(BASE_DIR, "label_encoders.pkl")
-DATA_PATH = os.path.join(BASE_DIR, '/Users/sakshamkapoor/Downloads/regression_streamlit/Used_Bikes.csv')
+DATA_PATH = os.path.join(BASE_DIR, "Used_Bikes.csv")
 
-print("BASE_DIR:", BASE_DIR)
-print("Files:", os.listdir(BASE_DIR))
-
+# -------------------------
+# Load Model & Dataset
+# -------------------------
 model = joblib.load(MODEL_PATH)
-encoders = joblib.load(ENCODER_PATH)
 df = pd.read_csv(DATA_PATH)
 
 # -------------------------
-# Create Label Encoders
+# Create Encoders
 # -------------------------
 brand_encoder = LabelEncoder()
 city_encoder = LabelEncoder()
@@ -28,7 +30,7 @@ city_encoder.fit(df["city"])
 owner_encoder.fit(df["owner"])
 
 # -------------------------
-# Streamlit Page
+# Streamlit Config
 # -------------------------
 st.set_page_config(
     page_title="Used Bike Price Prediction",
@@ -37,12 +39,11 @@ st.set_page_config(
 )
 
 st.title("🏍️ Used Bike Price Prediction")
-st.write("Enter bike details to predict its price.")
+st.write("Enter the bike details below.")
 
 # -------------------------
 # Inputs
 # -------------------------
-
 brand = st.selectbox(
     "Brand",
     sorted(df["brand"].unique())
@@ -79,23 +80,18 @@ owner = st.selectbox(
 # -------------------------
 # Prediction
 # -------------------------
-
 if st.button("Predict Price"):
 
-    brand_encoded = brand_encoder.transform([brand])[0]
-    city_encoded = city_encoder.transform([city])[0]
-    owner_encoded = owner_encoder.transform([owner])[0]
-
     input_df = pd.DataFrame({
-        "city": [city_encoded],
+        "city": [city_encoder.transform([city])[0]],
         "kms_driven": [kms_driven],
-        "owner": [owner_encoded],
+        "owner": [owner_encoder.transform([owner])[0]],
         "age": [age],
         "power": [power],
-        "brand": [brand_encoded]
+        "brand": [brand_encoder.transform([brand])[0]]
     })
 
     prediction = model.predict(input_df)[0]
-    st.balloons()
 
+    st.balloons()
     st.success(f"💰 Estimated Bike Price: ₹ {prediction:,.0f}")
