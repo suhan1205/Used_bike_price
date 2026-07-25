@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_PATH = os.path.join(BASE_DIR, "bike_price_model.pkl")
 ENCODER_PATH = os.path.join(BASE_DIR, "label_encoders.pkl")
-DATA_PATH = os.path.join(BASE_DIR, "/Users/sakshamkapoor/Downloads/ML-Summer_training/Used_Bikes.csv")
+DATA_PATH = os.path.join(BASE_DIR, '/Users/sakshamkapoor/Downloads/regression_streamlit/Used_Bikes.csv')
 
 print("BASE_DIR:", BASE_DIR)
 print("Files:", os.listdir(BASE_DIR))
