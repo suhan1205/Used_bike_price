@@ -1,168 +1,130 @@
-# 🎓 Student Exam Score Prediction using Artificial Neural Network (ANN)
+# 🏍️ Used Bike Price Prediction
 
-## 📌 Project Overview
+A Machine Learning web application built using **Python**, **Scikit-learn**, and **Streamlit** that predicts the selling price of a used bike based on its specifications.
 
-This project predicts a student's final exam score using an Artificial Neural Network (ANN). The model learns the relationship between academic, personal, and lifestyle factors to estimate the expected exam score.
+## 🚀 Live Demo
 
-The project demonstrates the complete deep learning workflow, including data preprocessing, feature engineering, model training, evaluation, and deployment with Streamlit.
+Add your Streamlit link here:
 
----
-
-## 🚀 Features
-
-- Student exam score prediction
-- Artificial Neural Network (ANN) Regression
-- Data preprocessing and feature scaling
-- Categorical feature encoding
-- Model evaluation using regression metrics
-- Interactive Streamlit web application
+https://your-streamlit-app-url.streamlit.app
 
 ---
 
-## 🛠️ Tech Stack
+## 📌 Features
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- TensorFlow / Keras
-- Matplotlib
-- Streamlit
-- Joblib
+- Predicts used bike prices instantly.
+- User-friendly Streamlit interface.
+- Machine Learning regression model.
+- Supports different brands, cities, owners, bike age, engine power, and kilometers driven.
+- Clean and responsive UI.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-Student-Exam-Score-Prediction-ANN/
+Used_bike_price/
 │
-├── dataset/
-│   └── student_performance.csv
-│
-├── models/
-│   ├── ann_model.keras
-│   ├── scaler.pkl
-│   ├── encoder.pkl
-│
-├── train.py
-├── app.py
-├── requirements.txt
-├── README.md
-└── images/
+└── regression_streamlit/
+    │── used_bikes_price_prediction.py
+    │── bike_price_model.pkl
+    │── label_encoders.pkl
+    │── Used_Bikes.csv
+    │── requirements.txt
+    │── README.md
 ```
 
 ---
 
-## 📊 Dataset Features
+## 📊 Dataset
 
-- Hours Studied
-- Attendance
-- Previous Scores
-- Sleep Hours
-- Tutoring Sessions
-- Physical Activity
-- Internet Access
-- Motivation Level
-- Family Income
-- Teacher Quality
-- School Type
-- Distance from Home
-- Gender
+The model is trained on a dataset containing used bike listings with features such as:
 
-### 🎯 Target Variable
-
-```
-Exam Score
-```
+- Brand
+- City
+- Kilometers Driven
+- Owner
+- Bike Age
+- Engine Power (CC)
+- Selling Price (Target)
 
 ---
 
-## 🧠 ANN Architecture
+## 🛠️ Technologies Used
 
-```
-Input Layer
-        │
-Dense (128, ReLU)
-        │
-Batch Normalization
-        │
-Dropout (0.3)
-        │
-Dense (64, ReLU)
-        │
-Dropout (0.2)
-        │
-Dense (32, ReLU)
-        │
-Dense (1)
-```
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Streamlit
+- Joblib
 
 ---
 
-## 📈 Model Evaluation
+## 🤖 Machine Learning Model
 
-The model is evaluated using:
+The final model used for prediction is:
 
-- Mean Absolute Error (MAE)
-- Mean Squared Error (MSE)
-- Root Mean Squared Error (RMSE)
-- R² Score
+- **Gradient Boosting Regressor**
 
 ---
 
 ## ⚙️ Installation
 
-Clone the repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/student-exam-score-ann.git
+git clone https://github.com/your-username/Used_bike_price.git
 ```
 
-Move into the project directory
+Go to the project folder:
 
 ```bash
-cd student-exam-score-ann
+cd Used_bike_price/regression_streamlit
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the Streamlit application
+Run the application:
 
 ```bash
-streamlit run app.py
+streamlit run used_bikes_price_prediction.py
 ```
 
 ---
 
-## 💻 Streamlit Application
+## 📈 Input Features
 
-The web application allows users to:
+The application accepts the following inputs:
 
-- Enter student details
-- Predict the expected exam score
-- View the predicted result instantly
-
----
-
-## 📸 Application Screenshot
-
-_Add your Streamlit application screenshot here._
+- Brand
+- City
+- Kilometers Driven
+- Bike Age
+- Engine Power (CC)
+- Owner
 
 ---
 
-## 🎯 Future Improvements
+## 🎯 Output
 
-- Hyperparameter tuning
-- Early stopping
-- Cross-validation
-- Feature importance analysis
-- Improved user interface
-- Model comparison with other regression algorithms
+The model predicts the estimated resale price of the selected used bike.
+
+---
+
+## 📷 Application Preview
+
+(Add screenshots here)
+
+---
+
+## 📜 License
+
+This project is created for educational and portfolio purposes.
 
 ---
 
@@ -170,14 +132,7 @@ _Add your Streamlit application screenshot here._
 
 **Hardik Chaturvedi**
 
-BCA Student | Machine Learning & Deep Learning Enthusiast
+BCA Student | Machine Learning Enthusiast
 
-GitHub: https://github.com/yourusername
-
-LinkedIn: https://linkedin.com/in/yourprofile
-
----
-
-## ⭐ If you like this project
-
-Give this repository a ⭐ on GitHub.
+GitHub:
+https://github.com/suhan1205
